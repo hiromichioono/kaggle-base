@@ -1,6 +1,6 @@
 # notebook-on-docker
 
-# プロジェクトの開き方
+## プロジェクトの開き方
 
 1. ターミナルを開く
 
@@ -10,19 +10,19 @@
     cd ~/desktop/test_v3
     ```
 
-2. プロジェクトをclone
+1. プロジェクトをclone
 
     ```bash
     git clone https://github.com/k-kawabata/notebook-on-docker.git
     ```
 
-3. clone直下のディレクトリに移動する
+1. clone直下のディレクトリに移動する
 
     ```bash
     cd notebook-on-docker
     ```
 
-4. そのディレクトリでVS Code(cursor)で開く
+1. そのディレクトリでVS Code(cursor)で開く
 
     ```bash
     code .
@@ -63,7 +63,7 @@
 
     コードセルで Copilot が有効になっていることを確認（設定済みであれば、提案が自動で表示されます）。
 
-### pipでパッケージ管理の手順(Dockerfileのrequirements.txtで自動化済み)
+## pipでパッケージ管理の手順(Dockerfileのrequirements.txtで自動化済み)
 
 1. インストールされているパッケージを確認
 
@@ -72,13 +72,13 @@
     ```
     numpyがインストールされていることを確認
 
-2. Docker内でnumpyをインストール
+1. Docker内でnumpyをインストール
 
     ```bash
     pip install numpy
     ```
 
-#### 無効の拡張機能について
+## 無効の拡張機能について
 
 1. ワークスペースで無効になっているJupyterを有効化する
 
@@ -86,62 +86,60 @@
     拡張機能の検索窓に jupyter と入力し、「Jupyter」を選択。
     「install」をクリック。
 
-##### Kaggle API キーを使う
+## Kaggle API キーを使う
 
 1. https://www.kaggle.com/ にアクセスし、右上のアカウントをクリックする
 
-2. settings をクリックする
+1. settings をクリックする
 
-3. API をクリックする
+1. API をクリックする
 
-4. Create New Token をクリックする
+1. Create New Token をクリックする
 
-5. ダウンロードした json ファイルを .kaggle ディレクトリに配置する
+1. ダウンロードした json ファイルを .kaggle ディレクトリに配置する
 
-example
+    ```
+    ./notebook-on-docker/
+    ├── docker-compose.yml
+    ├── .kaggle/
+    │   └── kaggle.json
+    └── notebooks/
+    ```
 
-```
-./notebook-on-docker/
-├── docker-compose.yml
-├── .kaggle/
-│   └── kaggle.json
-└── notebooks/
-```
-
-6. (optional) ターミナルでkaggle コマンドの確認
-
-sampleはすぐに結果を返します。
+1. (optional) ターミナルでkaggle コマンドの確認(すぐに結果が返ってくる)
 
     ```bash
     kaggle competitions list
     ```
 
-7. テストデータのフォルダを作り、フォルダ名をjane-street-real-time-market-data-forecastingにする
+1. テストデータのフォルダを作り、フォルダ名をjane-street-real-time-market-data-forecastingにする
 
-8. jane-street-real-time-market-data-forecastingフォルダ内でターミナルでデータをダウンロードする
+1. jane-street-real-time-market-data-forecastingフォルダ内でターミナルでデータをダウンロードする(sampleデータは60分程度かかります)
 
-sampleデータは60分程度かかります。
+    ```bash
+    kaggle competitions download -c jane-street-real-time-market-data-forecasting
+    ```
 
-```bash
-kaggle competitions download -c jane-street-real-time-market-data-forecasting
-```
-##### zipファイルの解凍方法
+## zipファイルの解凍方法
+
 重要:以下はfile,unzipコマンドを使える環境で行う。(仮想環境を立てる前のローカル環境で行う)
 
 1. データを確認する
 
-```bash
-file jane-street-real-time-market-data-forecasting.zip
-```
-期待するreturn
-jane-street-real-time-market-data-forecasting.zip: Zip archive data, at least v4.5 to extract, compression method=deflate
+    ```bash
+    file jane-street-real-time-market-data-forecasting.zip
+    ```
 
-2. データを解凍する
+    期待するreturn
+    ```bash
+    jane-street-real-time-market-data-forecasting.zip: Zip archive data, at least v4.5 to extract, compression method=deflate
+    ```
 
-```bash
-unzip jane-street-real-time-market-data-forecasting.zip
-```
+1. データを解凍する
 
-3. zipファイルはファイルを削除する。
+    ```bash
+    unzip jane-street-real-time-market-data-forecasting.zip
+    ```
 
+1. zipファイルはファイルを削除する。  
 なお、解凍ファイルはファイルが大きいためgitで管理しない。jane-street-real-time-market-data-forecastingフォルダを.gitignoreに追加した。
